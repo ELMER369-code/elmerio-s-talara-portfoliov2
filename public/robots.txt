@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://elmer369-code.github.io/elmerio-s-talara-portfoliov2/sitemap.xml
+
