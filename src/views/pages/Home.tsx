@@ -74,7 +74,7 @@ const Home = () => {
                     className="flex items-center gap-2 group cursor-pointer"
                 >
                     <div className={`w-11 h-11 border-2 border-theme-accent rounded-lg overflow-hidden shadow-[0_0_15px_${vibe === 'cyan' ? 'rgba(0,242,255,0.3)' : 'rgba(0,255,65,0.3)'}] group-hover:scale-110 transition-all duration-300 bg-navy-light`}>
-                        <img src="/assets/logo.png" alt="Logo" className="w-full h-full object-cover" />
+                        <img src={import.meta.env.BASE_URL + 'assets/logo.png'} alt="Logo" className="w-full h-full object-cover" />
                     </div>
                     <span className={`text-theme-accent font-bold tracking-tighter text-lg group-hover:text-silver transition-colors`}>STe.</span>
                 </div>

@@ -30,7 +30,7 @@ const AdminDashboard = () => {
             <aside className={`w-64 flex-shrink-0 flex flex-col transition-colors duration-300 ${sidebarColor} text-slate-100 hidden md:flex z-20`}>
                 <div className="p-6 flex items-center gap-3 border-b border-white/10">
                     <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden p-1">
-                        <img src="/assets/logo.png" alt="Logo" className="w-full h-full object-contain" />
+                        <img src={import.meta.env.BASE_URL + 'assets/logo.png'} alt="Logo" className="w-full h-full object-contain" />
                     </div>
                     <div>
                         <h2 className="font-bold text-lg leading-tight">Admin</h2>
