@@ -1,99 +1,39 @@
-import React, { useState } from 'react';
-import { supabase } from '../../lib/supabase';
+import React from 'react';
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
-
-    const handleLogin = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setLoading(true);
-        setError(null);
-
-        const { error } = await supabase.auth.signInWithPassword({
-            email,
-            password,
-        });
-
-        if (error) {
-            setError(error.message);
-        } else {
-            // Redirect to admin dashboard will be handled by router protection later
-            window.location.href = '/admin';
-        }
-        setLoading(false);
-    };
-
     return (
         <div className="min-h-screen bg-navy flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-sans selection:bg-cyan-electric selection:text-navy-deep">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 <h2 className="mt-6 text-center text-3xl font-extrabold text-silver font-mono">
-                    System Access
+                    Admin Features Unavailable
                 </h2>
                 <p className="mt-2 text-center text-sm text-slate-400">
-                    Admin Initialization Protocol
+                    Authentication requires a database backend
                 </p>
             </div>
 
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                 <div className="bg-navy-light py-8 px-4 shadow-[0_0_15px_rgba(100,255,218,0.1)] sm:rounded-lg sm:px-10 border border-cyan-electric/20">
-                    <form className="space-y-6" onSubmit={handleLogin}>
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-medium text-slate-300 font-mono">
-                                Operator ID (Email)
-                            </label>
-                            <div className="mt-1">
-                                <input
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    autoComplete="email"
-                                    required
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    className="appearance-none block w-full px-3 py-2 border border-slate-600 rounded-md shadow-sm bg-navy-deep text-silver placeholder-slate-500 focus:outline-none focus:ring-cyan-electric focus:border-cyan-electric sm:text-sm font-mono"
-                                    placeholder="admin@system.local"
-                                />
-                            </div>
+                    <div className="text-center space-y-4">
+                        <div className="w-16 h-16 mx-auto rounded-full bg-cyan-electric/10 flex items-center justify-center">
+                            <svg className="w-8 h-8 text-cyan-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
                         </div>
-
-                        <div>
-                            <label htmlFor="password" className="block text-sm font-medium text-slate-300 font-mono">
-                                Security Key (Password)
-                            </label>
-                            <div className="mt-1">
-                                <input
-                                    id="password"
-                                    name="password"
-                                    type="password"
-                                    autoComplete="current-password"
-                                    required
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    className="appearance-none block w-full px-3 py-2 border border-slate-600 rounded-md shadow-sm bg-navy-deep text-silver placeholder-slate-500 focus:outline-none focus:ring-cyan-electric focus:border-cyan-electric sm:text-sm font-mono"
-                                    placeholder="••••••••"
-                                />
-                            </div>
-                        </div>
-
-                        {error && (
-                            <div className="text-red-500 text-sm font-mono border border-red-500/50 p-2 rounded bg-red-500/10">
-                                [ ACCESS DENIED ] {error}
-                            </div>
-                        )}
-
-                        <div>
-                            <button
-                                type="submit"
-                                disabled={loading}
-                                className="w-full flex justify-center py-2 px-4 border border-cyan-electric rounded-md shadow-sm text-sm font-medium text-cyan-electric bg-transparent hover:bg-cyan-electric hover:text-navy-deep focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-electric transition-all disabled:opacity-50 disabled:cursor-not-allowed font-mono"
-                            >
-                                {loading ? 'Authenticating...' : 'Engage'}
-                            </button>
-                        </div>
-                    </form>
+                        <p className="text-slate-300 text-sm leading-relaxed">
+                            Admin login and authentication are powered by Supabase Auth.
+                            This portfolio is currently running in static mode without a database connection.
+                        </p>
+                        <p className="text-slate-500 text-xs font-mono">
+                            To enable admin access, configure a Supabase project and set the required environment variables.
+                        </p>
+                        <a
+                            href="/"
+                            className="inline-block mt-4 px-6 py-3 border border-cyan-electric rounded-md text-sm font-medium text-cyan-electric hover:bg-cyan-electric hover:text-navy-deep transition-all font-mono"
+                        >
+                            Return to Home
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
